@@ -1,6 +1,7 @@
 # web-projects
 Simple webApps 
-#
-1.Tic Tac Toe 
-2.To Do List
-3.Polling App
+<hr>
+1.Tic Tac Toe <br>
+2.To Do List <br>
+3.Polling App <br>
+<hr>
