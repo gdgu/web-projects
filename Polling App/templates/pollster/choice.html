@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'pollster/base.html' %}
+{% block title_block%} Options {% endblock %}
+{% block body_block%}
+
+
+{% if data %}
+<h2 class="text-center mt-5">{{ data.question_text }} </h2>
+{% else %}
+<p>No data Available</p>
+{% endif %}
+{% if choices %}
+    <div class="card mt-5" style="text-align: left; width: 40%; margin: auto;">
+        <div class="card-body">
+            <form action="{% url 'pollster:result' data.id %}" method="POST">
+             {% csrf_token %}
+            {% for c in choices%}
+                <input id="main" type="radio" name="qid" value="{{ c.id }}">
+                <label for="main">{{ c.choice_text }}</label><br>
+            {% endfor%}
+                <button type="submit" class="btn btn-sm btn-dark mt-2 float-left ">VOTE</button>
+            </form>
+        </div>
+    </div>
+{% else %}
+<p>No choices Available</p>
+{% endif %}
+{% endblock %}

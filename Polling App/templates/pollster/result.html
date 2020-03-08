@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'pollster/base.html' %}
+{% block title_block%} Options {% endblock %}
+
+{% block body_block%}
+
+
+{% if data%}
+<h2 class="text-center mt-5">{{ data.question_text }} </h2>
+{% else %}
+<p>No data Available</p>
+{% endif %}
+
+{% if choices %}
+        <ul class="list-group mt-5 mb-3" style="width: 50%;margin:auto;">
+            {% for c in choices%}
+            <li class="list-group-item">
+                {{c.choice_text}}
+                <div class="float-right">
+                        <button type="button" class="btn btn-sm btn-primary">{{ c.votes }}</button>
+                </div>
+            </li>
+            {% endfor%}
+        </ul>
+{% else %}
+<p>No choices Available</p>
+{% endif %}
+{% endblock %}

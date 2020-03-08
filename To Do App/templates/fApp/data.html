@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'fApp/base.html' %}
+
+{% block body_block %}
+
+<table class="table table-bordered mt-5 text-center">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Added Date</th>
+            <th scope="col">Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for d in data%}
+        <tr>
+            <td>{{d.id}}</td>
+            <td>{{d.added_date}}</td>
+            <td>{{d.text}}</td>
+        </tr>
+        {% endfor%}
+</table>
+{% endblock%}

@@ -1,0 +1,22 @@
+img{
+    width: 120px;
+    height: 80px;
+    border: solid white 3px;
+    border-radius: 8px;
+}
+
+body{
+    padding: 30px;
+}
+
+a{
+    position: relative;
+    left: 50%;
+    transform: translate(-60%,0);
+}
+
+.card{
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}

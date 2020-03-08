@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'pollster/base.html' %}
+{% block title_block%} Polls {% endblock %}
+{% block body_block%}
+
+{% if data %}
+    {% for d in data%}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h3 class="card-title">{{d.question_text}}</h3>
+                <form action="{% url 'pollster:choice' d.id %}" method="GET">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-dark mt-2 float-left">Choose</button>
+                </form>
+                <form action="{% url 'pollster:result' d.id %}" method="GET">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-dark mt-2 ml-2 float-left">See Results</button>
+                </form>
+            </div>
+        </div>
+    {% endfor%}
+
+{% else %}
+    <p>No Polls Available</p>
+{% endif %}
+{% endblock %}

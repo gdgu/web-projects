@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'pollster/base.html' %}
+{% block title_block%} HomePage {% endblock %}
+{% block body_block%}
+
+<div class="card mt-5">
+    <div class="card-body">
+        <h1>Welcome To The Pollster</h1>
+        <h4>This is a Django polling app</h4>
+        <form action="{% url 'pollster:poll' %}" method="GET">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-dark mt-2">View Availabe Polls</button>
+        </form>
+        
+    </div>
+</div>
+
+{% endblock %}
+
