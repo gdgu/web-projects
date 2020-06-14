@@ -1,0 +1,38 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
+        <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+      </div>
+      <h2 class="article-title">{{ object.title }}</h2>
+      <p class="article-content">{{ object.content }}</p>
+      <div class="float-right">
+        {% if object.author == user %}
+          <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+        {% endif %}
+      </div>
+    </div>
+  </article>
+
+  <ul class="list-group">
+    {% for comment in post.comments.all %}
+    <li class="list-group-item">{{ comment.text}}
+      <div class= 'mb-2 mt-1' style="color: darkblue;">
+        {{ comment.author }}
+        <small class="ml-2">{{ comment.created_date|date:"F d, Y" }}</small>
+      </div>
+    </li>
+        {% empty %}
+        <p>No comments posted.</p>
+    {% endfor %}
+  </ul>
+
+  <div style="padding-left: 42%;">
+    <a class="btn btn-info btn-sm mt-2 mb-3 ml-auto mr-auto" href="{% url 'comment-create' object.id %}">Add Comment</a>
+  </div>
+
+{% endblock content %}
